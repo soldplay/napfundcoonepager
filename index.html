@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Napf&Co - Partnerschaftsprogramm</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00A36C;
+            --primary-dark: #008F5D;
+            --primary-light: #E8F5F0;
+            --gold: #D4AF37;
+            --gold-light: #F5E6B8;
+            --text-dark: #1a1a1a;
+            --text-medium: #4a4a4a;
+            --text-light: #6a6a6a;
+            --white: #ffffff;
+            --bg-light: #f8faf9;
+            --border: #e0e0e0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Premium Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(0, 163, 108, 0.4); }
+            50% { box-shadow: 0 0 0 15px rgba(0, 163, 108, 0); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes borderGlow {
+            0%, 100% { border-color: var(--primary); box-shadow: 0 0 10px rgba(0, 163, 108, 0.3); }
+            50% { border-color: var(--gold); box-shadow: 0 0 20px rgba(212, 175, 55, 0.4); }
+        }
+
+        @keyframes numberPop {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            background: linear-gradient(135deg, #f8faf9 0%, #e8f5f0 50%, #f0f7f4 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            color: var(--text-dark);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .page-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--white);
+            box-shadow: 0 25px 100px rgba(0, 163, 108, 0.15);
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 50%, #006B47 100%);
+            background-size: 200% 200%;
+            animation: gradientShift 8s ease infinite;
+            padding: 35px 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: -40%;
+            left: 5%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        .logo img {
+            height: 70px;
+            width: auto;
+            background: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .logo img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .header-tagline {
+            color: rgba(255,255,255,0.95);
+            font-size: 1.1rem;
+            text-align: right;
+            max-width: 380px;
+            animation: slideInRight 0.8s ease-out;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+
+        /* Main Content */
+        main {
+            padding: 60px;
+        }
+
+        .intro {
+            text-align: center;
+            margin-bottom: 60px;
+            padding-bottom: 50px;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+            animation: fadeInDown 0.8s ease-out 0.2s both;
+        }
+
+        .intro::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--gold), var(--primary));
+            background-size: 200% 100%;
+            animation: shimmer 3s linear infinite;
+        }
+
+        .intro h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+        }
+
+        .intro p {
+            color: var(--text-medium);
+            font-size: 1.15rem;
+            max-width: 850px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Trust Badges */
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 30px;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 20px;
+            background: linear-gradient(135deg, var(--primary-light), var(--white));
+            border-radius: 50px;
+            border: 1px solid rgba(0, 163, 108, 0.2);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .trust-badge:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 163, 108, 0.15);
+            border-color: var(--primary);
+        }
+
+        .trust-badge-icon {
+            width: 24px;
+            height: 24px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .trust-badge span {
+            font-weight: 600;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+        }
+
+        /* Grid Layout */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .section {
+            padding: 35px;
+            background: linear-gradient(145deg, var(--bg-light), var(--white));
+            border-radius: 16px;
+            border-left: 4px solid var(--primary);
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.04);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: fadeInUp 0.8s ease-out both;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.3s; }
+        .section:nth-child(2) { animation-delay: 0.4s; }
+        .section:nth-child(3) { animation-delay: 0.5s; }
+
+        .section:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0, 163, 108, 0.12);
+            border-left-color: var(--gold);
+        }
+
+        .section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.35rem;
+            color: var(--primary-dark);
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section h2::before {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background: linear-gradient(135deg, var(--primary), var(--gold));
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .section p, .section li {
+            color: var(--text-medium);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .section ul {
+            list-style: none;
+            margin-top: 12px;
+        }
+
+        .section ul li {
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .section ul li:hover {
+            padding-left: 28px;
+            color: var(--primary-dark);
+        }
+
+        .section ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--gold));
+            transition: all 0.3s ease;
+        }
+
+        .section ul li:hover::before {
+            width: 12px;
+        }
+
+        /* Kooperationsmodell - Full Width */
+        .kooperation {
+            grid-column: 1 / -1;
+            background: linear-gradient(145deg, var(--primary-light), #d4ede4, #e8f5f0);
+            border-left: 4px solid var(--primary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .kooperation::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 163, 108, 0.1) 0%, transparent 70%);
+            animation: float 10s ease-in-out infinite;
+        }
+
+        .kooperation-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Vorteile Section */
+        .section-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 40px;
+            color: var(--text-dark);
+            animation: fadeInUp 0.8s ease-out 0.6s both;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--gold));
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+        .vorteile-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .vorteil-card {
+            text-align: center;
+            padding: 40px 25px;
+            background: linear-gradient(180deg, var(--white) 0%, var(--bg-light) 100%);
+            border: 1px solid rgba(0, 163, 108, 0.1);
+            border-radius: 20px;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: fadeInUp 0.8s ease-out both;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vorteil-card:nth-child(1) { animation-delay: 0.7s; }
+        .vorteil-card:nth-child(2) { animation-delay: 0.8s; }
+        .vorteil-card:nth-child(3) { animation-delay: 0.9s; }
+
+        .vorteil-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--gold), var(--primary));
+            background-size: 200% 100%;
+            transform: scaleX(0);
+            transition: transform 0.5s ease;
+        }
+
+        .vorteil-card:hover::before {
+            transform: scaleX(1);
+            animation: shimmer 2s linear infinite;
+        }
+
+        .vorteil-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 60px rgba(0, 163, 108, 0.18);
+            border-color: transparent;
+        }
+
+        .vorteil-card h3 {
+            font-size: 1.15rem;
+            color: var(--primary-dark);
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .vorteil-card p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .vorteil-number {
+            width: 55px;
+            height: 55px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-weight: 700;
+            font-size: 1.3rem;
+            box-shadow: 0 10px 30px rgba(0, 163, 108, 0.3);
+            animation: numberPop 0.6s ease-out both;
+            transition: all 0.4s ease;
+        }
+
+        .vorteil-card:nth-child(1) .vorteil-number { animation-delay: 0.9s; }
+        .vorteil-card:nth-child(2) .vorteil-number { animation-delay: 1s; }
+        .vorteil-card:nth-child(3) .vorteil-number { animation-delay: 1.1s; }
+
+        .vorteil-card:hover .vorteil-number {
+            transform: scale(1.1) rotate(5deg);
+            background: linear-gradient(135deg, var(--gold), #c9a227);
+        }
+
+        /* Provision Info Box */
+        .provision-box {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 50%, #006B47 100%);
+            background-size: 200% 200%;
+            animation: gradientShift 6s ease infinite, fadeInUp 0.8s ease-out 1s both;
+            color: var(--white);
+            padding: 45px 50px;
+            border-radius: 24px;
+            margin-bottom: 60px;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 163, 108, 0.3);
+        }
+
+        .provision-box::before {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.05) 50%, transparent 60%);
+            animation: shimmer 4s linear infinite;
+        }
+
+        .provision-highlight {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .provision-highlight .number {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(180deg, #ffffff 0%, #e0e0e0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .provision-highlight .label {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 5px;
+        }
+
+        .provision-details {
+            position: relative;
+            z-index: 1;
+        }
+
+        .provision-details h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .provision-details ul {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .provision-details li {
+            font-size: 1rem;
+            opacity: 0.95;
+            padding-left: 28px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .provision-details li:hover {
+            padding-left: 32px;
+            opacity: 1;
+        }
+
+        .provision-details li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            font-weight: 700;
+            color: var(--gold-light);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 50px;
+            background: linear-gradient(180deg, var(--bg-light) 0%, var(--white) 100%);
+            border-radius: 24px;
+            border: 1px solid rgba(0, 163, 108, 0.1);
+            animation: fadeInUp 0.8s ease-out 1.1s both;
+            transition: all 0.5s ease;
+        }
+
+        .cta-section:hover {
+            box-shadow: 0 15px 50px rgba(0, 163, 108, 0.1);
+        }
+
+        .cta-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+        }
+
+        .cta-section > p {
+            color: var(--text-medium);
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        /* Summary Box */
+        .summary {
+            background: linear-gradient(145deg, #f0f7f4, #e8f5f0, #f8faf9);
+            border: 2px solid transparent;
+            border-radius: 20px;
+            padding: 35px 40px;
+            margin-top: 30px;
+            position: relative;
+            overflow: hidden;
+            animation: borderGlow 4s ease-in-out infinite;
+        }
+
+        .summary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 18px;
+            padding: 2px;
+            background: linear-gradient(135deg, var(--primary), var(--gold), var(--primary));
+            background-size: 200% 200%;
+            animation: gradientShift 4s ease infinite;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+        }
+
+        .summary h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-dark);
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .summary p {
+            color: var(--text-medium);
+            position: relative;
+            z-index: 1;
+            font-size: 1.02rem;
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(180deg, var(--text-dark) 0%, #0d0d0d 100%);
+            color: var(--white);
+            padding: 40px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--gold), var(--primary));
+            background-size: 200% 100%;
+            animation: shimmer 3s linear infinite;
+        }
+
+        .footer-left {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            animation: slideInLeft 0.8s ease-out 1.2s both;
+        }
+
+        .footer-logo img {
+            height: 45px;
+            width: auto;
+            background: white;
+            padding: 8px 15px;
+            border-radius: 6px;
+            transition: all 0.4s ease;
+        }
+
+        .footer-logo img:hover {
+            box-shadow: 0 5px 20px rgba(0, 163, 108, 0.3);
+        }
+
+        .footer-company {
+            font-size: 0.9rem;
+            opacity: 0.75;
+            line-height: 1.6;
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 50px;
+            font-size: 0.95rem;
+            animation: slideInRight 0.8s ease-out 1.2s both;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-3px);
+        }
+
+        .contact-label {
+            font-size: 0.75rem;
+            opacity: 0.5;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 5px;
+        }
+
+        .contact-value {
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .contact-value:hover {
+            color: var(--primary);
+            text-shadow: 0 0 10px rgba(0, 163, 108, 0.5);
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+                animation: none;
+            }
+            .page-container {
+                box-shadow: none;
+            }
+            * {
+                animation: none !important;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .content-grid,
+            .kooperation-content,
+            .vorteile-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .provision-box {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .provision-details ul {
+                grid-template-columns: 1fr;
+            }
+            
+            header, main, footer {
+                padding: 30px;
+            }
+            
+            footer {
+                flex-direction: column;
+                gap: 30px;
+                text-align: center;
+            }
+            
+            .footer-left {
+                align-items: center;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .trust-badges {
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+
+            .header-tagline {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-container">
+        <header>
+            <div class="header-content">
+                <div class="logo">
+                    <img src="napf_und_co_logo.jpg" alt="Napf&Co Logo">
+                </div>
+                <p class="header-tagline">Premium Tierfutter für Hunde, Katzen und Pferde – 100% natürlich, 100% aus der EU</p>
+            </div>
+        </header>
+
+        <main>
+            <div class="intro">
+                <h1>Partnerschaftsprogramm für Hersteller</h1>
+                <p>Napf&Co ist eine wachsende Online-Plattform für hochwertiges, natürliches Tierfutter für Hunde, Katzen und Pferde. Unser Fokus liegt auf Marken, die Wert auf Qualität, Transparenz und langfristige Tiergesundheit legen.</p>
+                
+                <div class="trust-badges">
+                    <div class="trust-badge">
+                        <div class="trust-badge-icon">EU</div>
+                        <span>100% aus der EU</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-grid">
+                <div class="section">
+                    <h2>Unsere Rolle</h2>
+                    <p>Wir treten nicht als Hersteller auf, sondern als Mittler zwischen Produzenten und Endkunden. Unser Ziel ist es, ausgewählte Partnerprodukte auf unserer Seite sichtbar zu machen und Ihren Umsatz durch zielgerichtete Empfehlung und Vermarktung deutlich zu steigern.</p>
+                </div>
+
+                <div class="section">
+                    <h2>Was uns unterscheidet</h2>
+                    <p>Auf unserer Website bieten wir einen interaktiven Futterberater an. Tierhalter können dort in wenigen Schritten die Situation ihres Tieres beschreiben:</p>
+                    <ul>
+                        <li>Katze mit bestimmten Allergien / Unverträglichkeiten</li>
+                        <li>Hund, der Trockenfutter nur schwer kauen kann</li>
+                        <li>Besondere Bedürfnisse (Alter, Gewicht, Aktivitätslevel)</li>
+                    </ul>
+                    <p style="margin-top: 15px;">Der Berater schlägt daraufhin passende, tierfreundliche Produkte direkt aus unserem Sortiment vor – darunter idealerweise auch Ihre Produkte.</p>
+                </div>
+
+                <div class="section kooperation">
+                    <h2>Vorgeschlagenes Kooperationsmodell</h2>
+                    <div class="kooperation-content">
+                        <div>
+                            <ul>
+                                <li>Listung Ihrer Produkte auf napfundco2.vercel.app</li>
+                                <li>Provisionsbasiertes Modell pro erfolgreich vermitteltem Verkauf</li>
+                                <li>Orientierung an marktüblichen Konditionen im Pet-Bereich</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul>
+                                <li>Startprovision von 12–15 % auf den Netto-Warenwert pro Bestellung</li>
+                                <li>Je nach Produktmarge und Absatzvolumen flexibel anpassbar</li>
+                                <li>Der Versand der Produkte bleibt vollständig bei Ihnen</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="section-title">So entsteht zusätzlicher Umsatz für Ihre Produkte</h2>
+
+            <div class="vorteile-grid">
+                <div class="vorteil-card">
+                    <div class="vorteil-number">1</div>
+                    <h3>Produkt performt gut</h3>
+                    <p>Hohe Nachfrage, gute Conversion im Futterberater, positive Kundenrückmeldungen</p>
+                </div>
+                <div class="vorteil-card">
+                    <div class="vorteil-number">2</div>
+                    <h3>Gezielte Werbung</h3>
+                    <p>Napf&Co investiert in Performance-Ads, suchbasierte Werbung und datengestützte Zielgruppenoptimierung</p>
+                </div>
+                <div class="vorteil-card">
+                    <div class="vorteil-number">3</div>
+                    <h3>Qualifizierte Käufer</h3>
+                    <p>Nutzer mit klarer Kaufabsicht, kein Streuverlust, höhere Abschlussquote</p>
+                </div>
+            </div>
+
+            <div class="provision-box">
+                <div class="provision-highlight">
+                    <div class="number">12–15%</div>
+                    <div class="label">Provision</div>
+                </div>
+                <div class="provision-details">
+                    <h3>Die Provision deckt kollektiv:</h3>
+                    <ul>
+                        <li>Werbebudget</li>
+                        <li>Betrieb & Weiterentwicklung des Beraters</li>
+                        <li>Plattform, Tracking & technische Infrastruktur</li>
+                        <li>Analyse & Optimierung der Kampagnen</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="cta-section">
+                <h2>Nächster Schritt</h2>
+                <p>In einem kurzen Gespräch (Telefon oder Video-Call) würden wir gern gemeinsam klären, welche Ihrer Produktlinien sich besonders für unsere Zielgruppe eignen, welche Provisionsspanne wirtschaftlich sinnvoll ist, und in welcher Form wir Bestellungen technisch an Sie übergeben sollen.</p>
+                
+                <div class="summary">
+                    <h3>Win-Win-Modell – Kurz zusammengefasst</h3>
+                    <p>Sie zahlen nur bei realem Umsatz. Kein Vorab-Marketingbudget. Skalierung nur bei funktionierenden Produkten. Produkte, die gut ankommen, werden aktiv beworben. Die Provision von bis zu 15 % ist kollektiv kostendeckend und ermöglicht gezielte Werbung, die messbar zusätzlichen Umsatz bringt.</p>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <div class="footer-left">
+                <div class="footer-logo">
+                    <img src="napf_und_co_logo.jpg" alt="Napf&Co Logo">
+                </div>
+                <div class="footer-company">
+                    Napf&Co OG<br>
+                    Donau-City-Straße 7, 32. Stock<br>
+                    1220 Wien, Österreich
+                </div>
+            </div>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span class="contact-label">Telefon</span>
+                    <a href="tel:+436764844169" class="contact-value">+43 676 4844169</a>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-label">E-Mail</span>
+                    <a href="mailto:office@work-force.at" class="contact-value">office@work-force.at</a>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-label">Web</span>
+                    <a href="https://napfundco2.vercel.app" class="contact-value" target="_blank">napfundco2.vercel.app</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
