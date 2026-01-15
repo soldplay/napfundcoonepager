@@ -6,7 +6,7 @@
     <title>Napf&Co - Partnerschaftsprogramm für Hersteller</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #00A36C;
@@ -109,9 +109,25 @@
             50% { filter: drop-shadow(0 0 20px rgba(0, 163, 108, 0.6)); }
         }
 
-        @keyframes breathe {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.02); }
+        @keyframes luxuryGlow {
+            0%, 100% { 
+                box-shadow: 0 50px 150px rgba(0, 163, 108, 0.1), 0 20px 60px rgba(0, 0, 0, 0.05);
+            }
+            50% { 
+                box-shadow: 0 50px 150px rgba(0, 163, 108, 0.12), 0 20px 60px rgba(0, 0, 0, 0.06),
+                           0 0 0 1px rgba(0, 163, 108, 0.02);
+            }
+        }
+
+        @keyframes premiumShimmer {
+            0% { opacity: 0; }
+            50% { opacity: 0.4; }
+            100% { opacity: 0; }
+        }
+
+        @keyframes elegantShimmer {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.5; }
         }
 
         @keyframes lineExpand {
@@ -142,8 +158,26 @@
             margin: 0 auto;
             background: var(--white);
             box-shadow: 0 50px 150px rgba(0, 163, 108, 0.1), 0 20px 60px rgba(0, 0, 0, 0.05);
-            animation: fadeIn 1s ease-out, breathe 8s ease-in-out infinite;
+            animation: fadeIn 1s ease-out, luxuryGlow 15s ease-in-out infinite;
             position: relative;
+        }
+
+        .page-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, 
+                transparent 0%, 
+                rgba(0, 163, 108, 0.008) 25%, 
+                transparent 50%, 
+                rgba(201, 162, 39, 0.008) 75%, 
+                transparent 100%);
+            pointer-events: none;
+            animation: premiumShimmer 20s ease-in-out infinite;
+            opacity: 0;
         }
 
         /* ========== HEADER ========== */
@@ -906,7 +940,7 @@
             width: 200px;
             height: 200px;
             background: radial-gradient(circle, rgba(0, 163, 108, 0.05) 0%, transparent 70%);
-            animation: breathe 6s ease-in-out infinite;
+            animation: elegantShimmer 10s ease-in-out infinite;
         }
 
         .cta-section:hover {
@@ -937,6 +971,55 @@
             font-weight: 400;
             position: relative;
             z-index: 1;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-button-primary {
+            display: inline-block;
+            padding: 18px 40px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 10px 30px rgba(0, 163, 108, 0.3);
+            font-family: 'Inter', sans-serif;
+        }
+
+        .cta-button-primary:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(0, 163, 108, 0.4);
+        }
+
+        .cta-button-secondary {
+            display: inline-block;
+            padding: 18px 40px;
+            background: var(--white);
+            color: var(--primary-dark);
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border: 2px solid var(--primary);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            font-family: 'Inter', sans-serif;
+        }
+
+        .cta-button-secondary:hover {
+            transform: translateY(-3px);
+            background: var(--primary-light);
+            box-shadow: 0 10px 30px rgba(0, 163, 108, 0.2);
         }
 
         /* ========== SUMMARY BOX ========== */
@@ -1149,6 +1232,9 @@
             body { font-size: 16px; }
             main::before, main::after { display: none; }
             .team-grid { grid-template-columns: 1fr; }
+            .cta-buttons { flex-direction: column; align-items: center; }
+            .cta-button-primary, .cta-button-secondary { width: 100%; max-width: 300px; text-align: center; }
+            .section.full-width > div[style*="grid-template-columns: 1fr 1fr 1fr"] { grid-template-columns: 1fr !important; }
         }
     </style>
 </head>
@@ -1304,7 +1390,7 @@
                         </div>
                         <div>
                             <ul>
-                                <li>Einheitliche Provision von 15 % auf den Netto-Warenwert</li>
+                                <li>Full-Service Distributions-Marge von 30 % auf den Netto-Warenwert</li>
                                 <li>Transparente Abrechnung pro vermitteltem Verkauf</li>
                                 <li>Der Versand der Produkte bleibt vollständig bei Ihnen</li>
                             </ul>
@@ -1313,29 +1399,56 @@
                 </div>
             </div>
 
-            <!-- WARUM 20% SECTION -->
-            <h2 class="section-title">Warum 20 % Distributions-Marge?</h2>
+            <!-- WARUM 30% SECTION -->
+            <h2 class="section-title">Warum 30 % Full-Service Distributions-Marge?</h2>
             
             <div class="content-grid">
                 <div class="section full-width">
-                    <p style="font-size: 1.15rem; margin-bottom: 25px;">Die einheitliche Provision von 15 % ist nicht als reiner Gewinn konzipiert, sondern deckt kollektiv alle Leistungen ab, die wir für Sie erbringen:</p>
+                    <p style="font-size: 1.25rem; margin-bottom: 30px; font-weight: 600; color: var(--text-dark);">Performance-Partnerschaft auf Erfolgsbasis: Wir tragen 100% des Marketing-Risikos.</p>
+                    
+                    <div style="background: linear-gradient(135deg, #f0f7f4 0%, #e8f5f0 100%); padding: 35px; border-radius: 20px; margin-bottom: 35px; border-left: 5px solid var(--primary);">
+                        <h3 style="font-family: 'Inter', sans-serif; font-size: 1.4rem; color: var(--primary-dark); margin-bottom: 20px; font-weight: 700;">Der direkte Vergleich: Warum 30% ein No-Brainer ist</h3>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 25px; margin-bottom: 25px;">
+                            <div style="background: var(--white); padding: 25px; border-radius: 16px; border: 2px solid var(--border);">
+                                <p style="font-weight: 700; color: var(--text-dark); margin-bottom: 12px; font-size: 1.1rem;">Amazon Marketplace</p>
+                                <p style="font-size: 2rem; font-weight: 700; color: var(--primary); margin-bottom: 8px;">~15%</p>
+                                <p style="font-size: 0.95rem; color: var(--text-medium); line-height: 1.6; margin: 0;"><strong>Nur</strong> die Plattform. <strong>Keine</strong> Werbung. <strong>Keine</strong> Content-Erstellung. <strong>Kein</strong> Support. Sie zahlen zusätzlich 10-15% für eigene PPC-Werbung.</p>
+                            </div>
+                            <div style="background: var(--white); padding: 25px; border-radius: 16px; border: 2px solid var(--border);">
+                                <p style="font-weight: 700; color: var(--text-dark); margin-bottom: 12px; font-size: 1.1rem;">Marketing-Agentur</p>
+                                <p style="font-size: 2rem; font-weight: 700; color: var(--primary); margin-bottom: 8px;">20% + Budget</p>
+                                <p style="font-size: 0.95rem; color: var(--text-medium); line-height: 1.6; margin: 0;">20% vom Werbebudget <strong>plus</strong> Sie zahlen das komplette Ad-Budget vorab. Hohes Risiko, keine Garantie auf ROI.</p>
+                            </div>
+                            <div style="background: linear-gradient(135deg, var(--primary-light), #d4ede4); padding: 25px; border-radius: 16px; border: 2px solid var(--primary);">
+                                <p style="font-weight: 700; color: var(--primary-dark); margin-bottom: 12px; font-size: 1.1rem;">Napf&Co</p>
+                                <p style="font-size: 2rem; font-weight: 700; color: var(--primary-dark); margin-bottom: 8px;">30%</p>
+                                <p style="font-size: 0.95rem; color: var(--text-dark); line-height: 1.6; margin: 0; font-weight: 600;"><strong>Alles inklusive:</strong> Plattform, Werbung, Content, Support. <strong>0€ Risiko</strong> für Sie. Sie zahlen nur bei Verkauf.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p style="font-size: 1.15rem; margin-bottom: 25px; font-weight: 500;">Die 30% Full-Service Distributions-Marge deckt <strong>komplett</strong> ab:</p>
                     <div class="kooperation-content">
                         <div>
                             <ul>
-                                <li><strong>Werbebudget:</strong> Performance-Ads auf Google, Meta, TikTok</li>
-                                <li><strong>Plattform-Betrieb:</strong> Hosting, Wartung, technische Infrastruktur</li>
-                                <li><strong>Futterberater:</strong> Entwicklung und kontinuierliche Optimierung</li>
+                                <li><strong>100% Werbebudget-Risiko:</strong> Wir zahlen alle Performance-Ads (Google, Meta, TikTok) vorab. Sie zahlen nur bei erfolgreichem Verkauf.</li>
+                                <li><strong>Plattform & Technologie:</strong> Moderne E-Commerce-Infrastruktur, Hosting, Wartung, Sicherheit</li>
+                                <li><strong>Futterberater & KI:</strong> Entwicklung, Wartung und kontinuierliche Optimierung</li>
                             </ul>
                         </div>
                         <div>
                             <ul>
-                                <li><strong>Content-Erstellung:</strong> Produktfotos, Beschreibungen, SEO</li>
-                                <li><strong>Kundenservice:</strong> Beratung und Support für Endkunden</li>
-                                <li><strong>Analytics:</strong> Datenauswertung und Kampagnenoptimierung</li>
+                                <li><strong>Professionelle Content-Erstellung:</strong> Produktfotos, Videos, SEO-optimierte Beschreibungen</li>
+                                <li><strong>Vollständiger Kundenservice:</strong> Beratung, Support, Retourenabwicklung für Ihre Kunden</li>
+                                <li><strong>Analytics & Optimierung:</strong> Detaillierte Datenauswertung, A/B-Testing, kontinuierliche Kampagnenoptimierung</li>
                             </ul>
                         </div>
                     </div>
-                    <p style="margin-top: 25px; font-style: italic; color: var(--primary-dark);">Anders als bei klassischen Marketingausgaben zahlen Sie nur bei tatsächlichem Umsatz. Kein Werbebudget, das verpufft – nur messbare Ergebnisse.</p>
+                    
+                    <div style="background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%); padding: 30px; border-radius: 20px; margin-top: 30px; border-left: 5px solid var(--gold);">
+                        <p style="font-weight: 700; color: #92400e; margin-bottom: 12px; font-size: 1.2rem;">Das "No Cure, No Pay"-Prinzip</p>
+                        <p style="color: #78350f; font-size: 1.1rem; line-height: 1.8; margin: 0; font-weight: 500;">Wir tragen <strong>100% des Marketing-Risikos</strong>. Wenn unsere Werbung keinen Verkauf generiert, zahlen Sie <strong>0€</strong>. Kein Werbebudget, das verpufft. Keine Vorab-Kosten. Nur messbare, erfolgsbasierte Abrechnung. Sie skalieren nur bei funktionierenden Produkten – wir investieren nur in das, was funktioniert.</p>
+                    </div>
                 </div>
             </div>
 
@@ -1361,29 +1474,34 @@
 
             <div class="provision-box">
                 <div class="provision-highlight">
-                    <div class="number">15%</div>
-                    <div class="label">Provision</div>
+                    <div class="number">30%</div>
+                    <div class="label">Full-Service Marge</div>
                 </div>
                 <div class="provision-details">
-                    <h3>Ihre Vorteile auf einen Blick:</h3>
+                    <h3>Performance-Partnerschaft auf Erfolgsbasis:</h3>
                     <ul>
-                        <li>Kein Vorab-Marketingbudget nötig</li>
-                        <li>Professionelles Marketing-Team inklusive</li>
-                        <li>Zugang zu TikTok Shop & Social Commerce</li>
-                        <li>Transparente, erfolgsbasierte Abrechnung</li>
-                        <li>Ihre Marke bleibt beim Kunden präsent</li>
-                        <li>Volle Kontrolle über Versand & Qualität</li>
+                        <li><strong>0€ Ad-Budget-Risiko</strong> – Wir zahlen alle Werbung vorab</li>
+                        <li><strong>100% Marketing-Risiko</strong> bei uns – Sie zahlen nur bei Verkauf</li>
+                        <li><strong>Professionelle Content-Erstellung</strong> inklusive</li>
+                        <li><strong>Skalierung on Demand</strong> – nur bei funktionierenden Produkten</li>
+                        <li><strong>Amazon-Level PLUS Agentur</strong> – alles aus einer Hand</li>
+                        <li><strong>Volle Kontrolle</strong> über Versand & Qualität</li>
                     </ul>
                 </div>
             </div>
 
             <div class="cta-section">
-                <h2>Nächster Schritt</h2>
-                <p>In einem kurzen Gespräch (Telefon oder Video-Call) klären wir gemeinsam, welche Ihrer Produktlinien sich besonders für unsere Zielgruppe eignen und wie wir Bestellungen technisch an Sie übergeben (z.B. per CSV-Export, Shop-Schnittstelle oder E-Mail).</p>
+                <h2>Jetzt risikofrei skalieren</h2>
+                <p style="font-size: 1.2rem; margin-bottom: 40px; font-weight: 500;">In einem kurzen Gespräch (Telefon oder Video-Call) klären wir gemeinsam, welche Ihrer Produktlinien sich besonders für unsere Zielgruppe eignen und wie wir Bestellungen technisch an Sie übergeben (z.B. per CSV-Export, Shop-Schnittstelle oder E-Mail).</p>
+                
+                <div class="cta-buttons">
+                    <a href="mailto:office@work-force.at?subject=Partnerschaftsanfrage Napf&Co" class="cta-button-primary">Partnerschaft anfragen</a>
+                    <a href="tel:+436764844169" class="cta-button-secondary">Direkt anrufen</a>
+                </div>
                 
                 <div class="summary">
-                    <h3>Win-Win-Modell – Kurz zusammengefasst</h3>
-                    <p>Sie zahlen nur bei realem Umsatz. Kein Vorab-Marketingbudget. Skalierung nur bei funktionierenden Produkten. Unser erfahrenes Marketing-Team kümmert sich um alles – von der Produktpräsentation bis zur Kundenakquise. Die Provision von 15 % deckt alle Leistungen ab und ermöglicht gezielte Werbung, die messbar zusätzlichen Umsatz für Sie generiert.</p>
+                    <h3>Performance-Partnerschaft – Kurz zusammengefasst</h3>
+                    <p><strong>Sie zahlen nur bei realem Umsatz.</strong> <strong>0€ Ad-Budget-Risiko.</strong> Skalierung nur bei funktionierenden Produkten. Wir tragen 100% des Marketing-Risikos und investieren vorab in Werbung, Content und Technologie. Die Full-Service Distributions-Marge von 30% deckt alles ab: Plattform, Werbung, Content, Support. <strong>Kein BS. Nur messbare Ergebnisse.</strong></p>
                 </div>
             </div>
         </main>
