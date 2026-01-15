@@ -109,9 +109,20 @@
             50% { filter: drop-shadow(0 0 20px rgba(0, 163, 108, 0.6)); }
         }
 
-        @keyframes breathe {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.02); }
+        @keyframes subtleGlow {
+            0%, 100% { 
+                box-shadow: 0 50px 150px rgba(0, 163, 108, 0.1), 0 20px 60px rgba(0, 0, 0, 0.05);
+            }
+            50% { 
+                box-shadow: 0 50px 150px rgba(0, 163, 108, 0.12), 0 20px 60px rgba(0, 0, 0, 0.06),
+                           0 0 0 1px rgba(0, 163, 108, 0.02);
+            }
+        }
+
+        @keyframes elegantShimmer {
+            0% { opacity: 0.3; }
+            50% { opacity: 0.5; }
+            100% { opacity: 0.3; }
         }
 
         @keyframes lineExpand {
@@ -139,8 +150,27 @@
             margin: 0 auto;
             background: var(--white);
             box-shadow: 0 50px 150px rgba(0, 163, 108, 0.1), 0 20px 60px rgba(0, 0, 0, 0.05);
-            animation: fadeIn 1s ease-out, breathe 8s ease-in-out infinite;
+            animation: fadeIn 1s ease-out, subtleGlow 12s ease-in-out infinite;
             position: relative;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .page-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, 
+                transparent 0%, 
+                rgba(0, 163, 108, 0.01) 25%, 
+                transparent 50%, 
+                rgba(201, 162, 39, 0.01) 75%, 
+                transparent 100%);
+            pointer-events: none;
+            animation: elegantShimmer 15s ease-in-out infinite;
+            opacity: 0;
         }
 
         /* ========== HEADER ========== */
@@ -687,7 +717,12 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.2));
-            animation: breathe 4s ease-in-out infinite;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .provision-box:hover .provision-highlight .number {
+            filter: drop-shadow(0 6px 20px rgba(0, 0, 0, 0.3));
+            transform: scale(1.02);
         }
 
         .provision-highlight .label {
@@ -884,7 +919,7 @@
             width: 200px;
             height: 200px;
             background: radial-gradient(circle, rgba(0, 163, 108, 0.05) 0%, transparent 70%);
-            animation: breathe 6s ease-in-out infinite;
+            animation: elegantShimmer 8s ease-in-out infinite;
         }
 
         .cta-section:hover {
