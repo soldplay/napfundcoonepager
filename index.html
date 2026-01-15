@@ -16,8 +16,8 @@
             --gold-light: #F5E6B8;
             --platinum: #E5E4E2;
             --text-dark: #1a1a1a;
-            --text-medium: #4a4a4a;
-            --text-light: #6a6a6a;
+            --text-medium: #2d2d2d;
+            --text-light: #4a4a4a;
             --white: #ffffff;
             --bg-light: #f8faf9;
             --border: #e0e0e0;
@@ -109,20 +109,9 @@
             50% { filter: drop-shadow(0 0 20px rgba(0, 163, 108, 0.6)); }
         }
 
-        @keyframes subtleGlow {
-            0%, 100% { 
-                box-shadow: 0 50px 150px rgba(0, 163, 108, 0.1), 0 20px 60px rgba(0, 0, 0, 0.05);
-            }
-            50% { 
-                box-shadow: 0 50px 150px rgba(0, 163, 108, 0.12), 0 20px 60px rgba(0, 0, 0, 0.06),
-                           0 0 0 1px rgba(0, 163, 108, 0.02);
-            }
-        }
-
-        @keyframes elegantShimmer {
-            0% { opacity: 0.3; }
-            50% { opacity: 0.5; }
-            100% { opacity: 0.3; }
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
         }
 
         @keyframes lineExpand {
@@ -134,15 +123,18 @@
         html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'Outfit', sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             background: linear-gradient(135deg, #f0f7f4 0%, #e8f5f0 25%, #f8faf9 50%, #e8f5f0 75%, #f0f7f4 100%);
             background-size: 400% 400%;
             animation: gradientShift 20s ease infinite;
             color: var(--text-dark);
-            line-height: 1.7;
+            line-height: 1.75;
             min-height: 100vh;
             font-weight: 400;
-            letter-spacing: 0.2px;
+            font-size: 17px;
+            letter-spacing: -0.01em;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         .page-container {
@@ -150,27 +142,8 @@
             margin: 0 auto;
             background: var(--white);
             box-shadow: 0 50px 150px rgba(0, 163, 108, 0.1), 0 20px 60px rgba(0, 0, 0, 0.05);
-            animation: fadeIn 1s ease-out, subtleGlow 12s ease-in-out infinite;
+            animation: fadeIn 1s ease-out, breathe 8s ease-in-out infinite;
             position: relative;
-            transition: box-shadow 0.3s ease;
-        }
-
-        .page-container::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, 
-                transparent 0%, 
-                rgba(0, 163, 108, 0.01) 25%, 
-                transparent 50%, 
-                rgba(201, 162, 39, 0.01) 75%, 
-                transparent 100%);
-            pointer-events: none;
-            animation: elegantShimmer 15s ease-in-out infinite;
-            opacity: 0;
         }
 
         /* ========== HEADER ========== */
@@ -247,14 +220,15 @@
 
         .header-tagline {
             color: rgba(255,255,255,0.95);
-            font-size: 1.15rem;
+            font-size: 1.2rem;
             text-align: right;
             max-width: 400px;
             animation: slideInRight 1s cubic-bezier(0.16, 1, 0.3, 1);
             font-weight: 400;
-            letter-spacing: 0.5px;
-            line-height: 1.6;
+            letter-spacing: -0.01em;
+            line-height: 1.7;
             text-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
         /* ========== MAIN CONTENT ========== */
@@ -312,22 +286,23 @@
         }
 
         .intro h1 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2.8rem;
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 3rem;
             color: var(--text-dark);
-            margin-bottom: 25px;
-            letter-spacing: 1px;
-            font-weight: 600;
+            margin-bottom: 30px;
+            letter-spacing: -0.02em;
+            font-weight: 700;
+            line-height: 1.2;
             animation: textReveal 1.2s ease-out 0.5s both;
         }
 
         .intro p {
             color: var(--text-medium);
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             max-width: 900px;
             margin: 0 auto;
-            line-height: 1.9;
-            font-weight: 300;
+            line-height: 1.8;
+            font-weight: 400;
         }
 
         /* ========== TRUST BADGES ========== */
@@ -377,8 +352,9 @@
         .trust-badge span {
             font-weight: 500;
             color: var(--text-dark);
-            font-size: 0.95rem;
-            letter-spacing: 0.3px;
+            font-size: 1rem;
+            letter-spacing: -0.01em;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
         /* ========== CONTENT GRID ========== */
@@ -427,14 +403,16 @@
         }
 
         .section h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 1.75rem;
             color: var(--primary-dark);
-            margin-bottom: 20px;
+            margin-bottom: 24px;
             display: flex;
             align-items: center;
             gap: 14px;
-            font-weight: 600;
+            font-weight: 700;
+            line-height: 1.3;
+            letter-spacing: -0.01em;
         }
 
         .section h2::before {
@@ -449,8 +427,9 @@
 
         .section p, .section li {
             color: var(--text-medium);
-            font-size: 1.05rem;
-            line-height: 1.8;
+            font-size: 1.1rem;
+            line-height: 1.85;
+            font-weight: 400;
         }
 
         .section ul {
@@ -524,14 +503,15 @@
         /* ========== SECTION TITLE ========== */
         .section-title {
             text-align: center;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2.2rem;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 2.5rem;
             margin-bottom: 50px;
             color: var(--text-dark);
             animation: fadeInUp 1s ease-out 0.7s both;
             position: relative;
-            font-weight: 600;
-            letter-spacing: 0.5px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
         }
 
         .section-title::after {
@@ -613,21 +593,23 @@
         }
 
         .vorteil-card h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.3rem;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 1.4rem;
             color: var(--primary-dark);
-            margin-bottom: 15px;
-            font-weight: 600;
+            margin-bottom: 16px;
+            font-weight: 700;
+            line-height: 1.3;
             position: relative;
             z-index: 1;
         }
 
         .vorteil-card p {
-            font-size: 1rem;
-            color: var(--text-light);
-            line-height: 1.7;
+            font-size: 1.05rem;
+            color: var(--text-medium);
+            line-height: 1.75;
             position: relative;
             z-index: 1;
+            font-weight: 400;
         }
 
         .vorteil-number {
@@ -642,7 +624,7 @@
             margin: 0 auto 25px;
             font-weight: 600;
             font-size: 1.5rem;
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'Playfair Display', Georgia, serif;
             box-shadow: 0 15px 40px rgba(0, 163, 108, 0.35), inset 0 -3px 10px rgba(0, 0, 0, 0.1);
             animation: numberPop 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) both;
             transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -708,8 +690,8 @@
         }
 
         .provision-highlight .number {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 5rem;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 5.5rem;
             font-weight: 700;
             line-height: 1;
             background: linear-gradient(180deg, #ffffff 0%, #d0d0d0 50%, #ffffff 100%);
@@ -717,21 +699,18 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.2));
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .provision-box:hover .provision-highlight .number {
-            filter: drop-shadow(0 6px 20px rgba(0, 0, 0, 0.3));
-            transform: scale(1.02);
+            transition: filter 0.3s ease;
+            letter-spacing: -0.02em;
         }
 
         .provision-highlight .label {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             opacity: 0.9;
-            letter-spacing: 4px;
+            letter-spacing: 3px;
             text-transform: uppercase;
             margin-top: 10px;
-            font-weight: 300;
+            font-weight: 500;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
         .provision-details {
@@ -740,11 +719,12 @@
         }
 
         .provision-details h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 1.6rem;
             margin-bottom: 25px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            line-height: 1.3;
         }
 
         .provision-details ul {
@@ -755,12 +735,13 @@
         }
 
         .provision-details li {
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             opacity: 0.95;
             padding-left: 32px;
             position: relative;
             transition: all 0.4s ease;
-            font-weight: 300;
+            font-weight: 400;
+            line-height: 1.75;
         }
 
         .provision-details li:hover {
@@ -825,17 +806,19 @@
         }
 
         .team-card h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.15rem;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 1.25rem;
             color: var(--primary-dark);
-            margin-bottom: 10px;
-            font-weight: 600;
+            margin-bottom: 12px;
+            font-weight: 700;
+            line-height: 1.3;
         }
 
         .team-card p {
-            font-size: 0.9rem;
-            color: var(--text-light);
-            line-height: 1.6;
+            font-size: 1rem;
+            color: var(--text-medium);
+            line-height: 1.7;
+            font-weight: 400;
         }
 
         /* ========== TECH SECTION ========== */
@@ -885,16 +868,20 @@
         }
 
         .tech-item h4 {
-            font-size: 1rem;
+            font-size: 1.1rem;
             color: var(--text-dark);
-            margin-bottom: 3px;
-            font-weight: 600;
+            margin-bottom: 5px;
+            font-weight: 700;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.3;
         }
 
         .tech-item p {
-            font-size: 0.85rem;
-            color: var(--text-light);
+            font-size: 0.95rem;
+            color: var(--text-medium);
             margin: 0;
+            line-height: 1.6;
+            font-weight: 400;
         }
 
         /* ========== CTA SECTION ========== */
@@ -919,7 +906,7 @@
             width: 200px;
             height: 200px;
             background: radial-gradient(circle, rgba(0, 163, 108, 0.05) 0%, transparent 70%);
-            animation: elegantShimmer 8s ease-in-out infinite;
+            animation: breathe 6s ease-in-out infinite;
         }
 
         .cta-section:hover {
@@ -928,11 +915,13 @@
         }
 
         .cta-section h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2.2rem;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 2.5rem;
             color: var(--text-dark);
-            margin-bottom: 25px;
-            font-weight: 600;
+            margin-bottom: 30px;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
             position: relative;
             z-index: 1;
         }
@@ -943,9 +932,9 @@
             max-width: 750px;
             margin-left: auto;
             margin-right: auto;
-            font-size: 1.1rem;
-            line-height: 1.9;
-            font-weight: 300;
+            font-size: 1.15rem;
+            line-height: 1.85;
+            font-weight: 400;
             position: relative;
             z-index: 1;
         }
@@ -981,22 +970,24 @@
         }
 
         .summary h3 {
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             color: var(--primary-dark);
-            font-size: 1.5rem;
-            margin-bottom: 18px;
+            font-size: 1.6rem;
+            margin-bottom: 20px;
             position: relative;
             z-index: 1;
-            font-weight: 600;
+            font-weight: 700;
+            line-height: 1.3;
+            letter-spacing: -0.01em;
         }
 
         .summary p {
             color: var(--text-medium);
             position: relative;
             z-index: 1;
-            font-size: 1.08rem;
-            line-height: 1.8;
-            font-weight: 300;
+            font-size: 1.1rem;
+            line-height: 1.85;
+            font-weight: 400;
         }
 
         /* ========== INFO BOX ========== */
@@ -1010,7 +1001,7 @@
         }
 
         .info-box h4 {
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'Playfair Display', Georgia, serif;
             color: #92400e;
             font-size: 1.2rem;
             margin-bottom: 12px;
@@ -1152,8 +1143,10 @@
             .trust-badges { gap: 15px; }
             .header-content { flex-direction: column; gap: 25px; text-align: center; }
             .header-tagline { text-align: center; }
-            .intro h1 { font-size: 2rem; }
-            .section-title { font-size: 1.8rem; }
+            .intro h1 { font-size: 2.2rem; line-height: 1.2; }
+            .section-title { font-size: 2rem; line-height: 1.2; }
+            .cta-section h2 { font-size: 2rem; }
+            body { font-size: 16px; }
             main::before, main::after { display: none; }
             .team-grid { grid-template-columns: 1fr; }
         }
@@ -1311,7 +1304,7 @@
                         </div>
                         <div>
                             <ul>
-                                <li>Transparente Provision von 20 % auf den Netto-Warenwert</li>
+                                <li>Einheitliche Provision von 15 % auf den Netto-Warenwert</li>
                                 <li>Transparente Abrechnung pro vermitteltem Verkauf</li>
                                 <li>Der Versand der Produkte bleibt vollständig bei Ihnen</li>
                             </ul>
@@ -1325,90 +1318,24 @@
             
             <div class="content-grid">
                 <div class="section full-width">
-                    <p style="font-size: 1.15rem; margin-bottom: 30px; font-weight: 500;">Die Provision von 20 % ist als <strong>Distributions-Marge</strong> konzipiert – vergleichbar mit der Handelsspanne, die Sie im klassischen Einzelhandel abgeben müssten. Der entscheidende Unterschied: Wir übernehmen das komplette Risiko der Kundenakquise.</p>
-                    
-                    <div style="background: linear-gradient(135deg, #f0f7f4 0%, #e8f5f0 100%); padding: 30px; border-radius: 16px; margin-bottom: 30px; border-left: 4px solid var(--primary);">
-                        <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--primary-dark); margin-bottom: 15px;">Der Marktvergleich: Warum 20 % fair ist</h3>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
-                            <div>
-                                <p style="font-weight: 600; color: var(--text-dark); margin-bottom: 8px;">Amazon Marketplace</p>
-                                <p style="font-size: 0.95rem; color: var(--text-medium);">~15 % Gebühr – <strong>ohne Werbung</strong>, ohne Content-Erstellung, ohne Kundenservice. Zusätzlich müssen Sie selbst für PPC-Werbung zahlen (oft weitere 10-15 %).</p>
-                            </div>
-                            <div>
-                                <p style="font-weight: 600; color: var(--text-dark); margin-bottom: 8px;">Klassischer Einzelhandel</p>
-                                <p style="font-size: 0.95rem; color: var(--text-medium);">30-50 % Handelsspanne üblich. Sie tragen Lagerkosten, Personal, Miete und das Risiko, dass Produkte nicht verkauft werden.</p>
-                            </div>
-                        </div>
-                        <div style="background: var(--white); padding: 20px; border-radius: 12px; border: 2px solid var(--primary);">
-                            <p style="font-weight: 600; color: var(--primary-dark); margin-bottom: 8px; font-size: 1.05rem;">Napf&Co: Amazon-Level PLUS Agentur-Leistung</p>
-                            <p style="font-size: 0.95rem; color: var(--text-medium); margin: 0;">Wir bieten Ihnen Marktplatz-Funktionalität (wie Amazon) <strong>plus</strong> komplette Marketing-Agentur-Leistung (Werbung, Content, Support) – und das für eine transparente Distributions-Marge von 20 %.</p>
-                        </div>
-                    </div>
-
-                    <p style="font-size: 1.1rem; margin-bottom: 25px; font-weight: 500;">Die 20 % decken kollektiv alle Leistungen ab, die wir für Sie erbringen:</p>
+                    <p style="font-size: 1.15rem; margin-bottom: 25px;">Die einheitliche Provision von 15 % ist nicht als reiner Gewinn konzipiert, sondern deckt kollektiv alle Leistungen ab, die wir für Sie erbringen:</p>
                     <div class="kooperation-content">
                         <div>
                             <ul>
-                                <li><strong>Werbebudget & Performance-Marketing:</strong> Google Ads, Meta Ads, TikTok Ads – wir tragen das volle Risiko. Im Tierfutter-Bereich liegen die Werbekosten (CPA) bei 20-25 % des Warenwerts. Wir investieren vorab, Sie zahlen nur bei Erfolg.</li>
-                                <li><strong>Plattform & Technologie:</strong> Moderne E-Commerce-Infrastruktur (Vercel, Next.js), Hosting, Wartung, Sicherheit</li>
-                                <li><strong>Futterberater & Personalisierung:</strong> Entwicklung, Wartung und kontinuierliche Optimierung des KI-gestützten Beratungssystems</li>
+                                <li><strong>Werbebudget:</strong> Performance-Ads auf Google, Meta, TikTok</li>
+                                <li><strong>Plattform-Betrieb:</strong> Hosting, Wartung, technische Infrastruktur</li>
+                                <li><strong>Futterberater:</strong> Entwicklung und kontinuierliche Optimierung</li>
                             </ul>
                         </div>
                         <div>
                             <ul>
-                                <li><strong>Content-Erstellung:</strong> Professionelle Produktfotos, SEO-optimierte Beschreibungen, Produktvideos</li>
-                                <li><strong>Kundenservice:</strong> Vollständige Betreuung Ihrer Endkunden – Beratung, Support, Retourenabwicklung</li>
-                                <li><strong>Analytics & Optimierung:</strong> Detaillierte Datenauswertung, A/B-Testing, kontinuierliche Kampagnenoptimierung</li>
+                                <li><strong>Content-Erstellung:</strong> Produktfotos, Beschreibungen, SEO</li>
+                                <li><strong>Kundenservice:</strong> Beratung und Support für Endkunden</li>
+                                <li><strong>Analytics:</strong> Datenauswertung und Kampagnenoptimierung</li>
                             </ul>
                         </div>
                     </div>
-                    
-                    <div style="background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%); padding: 25px; border-radius: 16px; margin-top: 30px; border-left: 4px solid var(--gold);">
-                        <p style="font-weight: 600; color: #92400e; margin-bottom: 10px; font-size: 1.05rem;">Das "No Cure, No Pay"-Prinzip</p>
-                        <p style="color: #78350f; font-size: 1rem; line-height: 1.7; margin: 0;">Anders als bei klassischen Marketingausgaben oder Agenturverträgen zahlen Sie nur bei tatsächlichem Umsatz. Wir tragen das volle Risiko: Wenn unsere Werbung keinen Verkauf generiert, zahlen Sie nichts. Kein Werbebudget, das verpufft – nur messbare, erfolgsbasierte Abrechnung.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- WIRTSCHAFTLICHKEIT SECTION -->
-            <div class="content-grid">
-                <div class="section full-width" style="background: linear-gradient(160deg, #f0f7f4 0%, #e8f5f0 100%);">
-                    <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: var(--primary-dark); margin-bottom: 20px; display: flex; align-items: center; gap: 14px;">
-                        <span style="width: 12px; height: 12px; background: linear-gradient(135deg, var(--primary), var(--gold)); border-radius: 50%; animation: pulse 2.5s ease-in-out infinite; box-shadow: 0 0 15px rgba(0, 163, 108, 0.4);"></span>
-                        Die Wirtschaftlichkeit: Warum 20 % fair kalkuliert sind
-                    </h2>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 25px;">
-                        <div>
-                            <p style="font-weight: 600; color: var(--text-dark); margin-bottom: 15px; font-size: 1.1rem;">Die Realität im E-Commerce:</p>
-                            <p style="color: var(--text-medium); line-height: 1.8; margin-bottom: 20px;">Im Tierfutter-Onlinehandel liegt ein guter ROAS (Return on Ad Spend) bei 4-5. Das bedeutet: Um einen Kunden für einen 50€-Einkauf zu gewinnen, müssen wir im Schnitt 10-12,50€ an Werbung investieren.</p>
-                            <div style="background: var(--white); padding: 20px; border-radius: 12px; border: 1px solid var(--border);">
-                                <p style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 8px;">Beispielrechnung:</p>
-                                <p style="font-weight: 600; color: var(--primary-dark); margin: 0;">Verkauf: 50€ | Werbekosten: ~12€ | Ihre Provision (20%): 10€</p>
-                                <p style="font-size: 0.85rem; color: var(--text-light); margin-top: 8px; margin-bottom: 0;">Wir decken die Werbekosten und erwirtschaften eine schmale Marge für Plattform, Support & Entwicklung.</p>
-                            </div>
-                        </div>
-                        <div>
-                            <p style="font-weight: 600; color: var(--text-dark); margin-bottom: 15px; font-size: 1.1rem;">Warum ist das für Sie vorteilhaft?</p>
-                            <ul style="list-style: none; margin: 0; padding: 0;">
-                                <li style="padding: 8px 0; padding-left: 28px; position: relative; color: var(--text-medium); line-height: 1.7;">
-                                    <span style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 10px; height: 2px; background: linear-gradient(90deg, var(--primary), var(--gold)); border-radius: 2px;"></span>
-                                    <strong>Kein Risiko:</strong> Sie zahlen nur bei erfolgreichem Verkauf
-                                </li>
-                                <li style="padding: 8px 0; padding-left: 28px; position: relative; color: var(--text-medium); line-height: 1.7;">
-                                    <span style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 10px; height: 2px; background: linear-gradient(90deg, var(--primary), var(--gold)); border-radius: 2px;"></span>
-                                    <strong>Besser als Einzelhandel:</strong> 20% statt 30-50% Handelsspanne
-                                </li>
-                                <li style="padding: 8px 0; padding-left: 28px; position: relative; color: var(--text-medium); line-height: 1.7;">
-                                    <span style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 10px; height: 2px; background: linear-gradient(90deg, var(--primary), var(--gold)); border-radius: 2px;"></span>
-                                    <strong>Besser als Amazon:</strong> 20% inkl. Werbung vs. 15% + eigene PPC-Kosten
-                                </li>
-                                <li style="padding: 8px 0; padding-left: 28px; position: relative; color: var(--text-medium); line-height: 1.7;">
-                                    <span style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 10px; height: 2px; background: linear-gradient(90deg, var(--primary), var(--gold)); border-radius: 2px;"></span>
-                                    <strong>Full Service:</strong> Alles aus einer Hand – keine zusätzlichen Kosten
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                    <p style="margin-top: 25px; font-style: italic; color: var(--primary-dark);">Anders als bei klassischen Marketingausgaben zahlen Sie nur bei tatsächlichem Umsatz. Kein Werbebudget, das verpufft – nur messbare Ergebnisse.</p>
                 </div>
             </div>
 
@@ -1434,17 +1361,17 @@
 
             <div class="provision-box">
                 <div class="provision-highlight">
-                    <div class="number">20%</div>
-                    <div class="label">Distributions-Marge</div>
+                    <div class="number">15%</div>
+                    <div class="label">Provision</div>
                 </div>
                 <div class="provision-details">
                     <h3>Ihre Vorteile auf einen Blick:</h3>
                     <ul>
-                        <li>Kein Vorab-Marketingbudget – wir tragen das Risiko</li>
-                        <li>Amazon-Level PLUS Agentur-Leistung inklusive</li>
+                        <li>Kein Vorab-Marketingbudget nötig</li>
+                        <li>Professionelles Marketing-Team inklusive</li>
                         <li>Zugang zu TikTok Shop & Social Commerce</li>
                         <li>Transparente, erfolgsbasierte Abrechnung</li>
-                        <li>Besser als Einzelhandel: 20% statt 30-50%</li>
+                        <li>Ihre Marke bleibt beim Kunden präsent</li>
                         <li>Volle Kontrolle über Versand & Qualität</li>
                     </ul>
                 </div>
@@ -1456,7 +1383,7 @@
                 
                 <div class="summary">
                     <h3>Win-Win-Modell – Kurz zusammengefasst</h3>
-                    <p>Sie zahlen nur bei realem Umsatz. Kein Vorab-Marketingbudget. Skalierung nur bei funktionierenden Produkten. Unser erfahrenes Marketing-Team kümmert sich um alles – von der Produktpräsentation bis zur Kundenakquise. Die Distributions-Marge von 20 % deckt alle Leistungen ab (Plattform, Werbung, Content, Support) und ermöglicht gezielte Werbung, die messbar zusätzlichen Umsatz für Sie generiert. Wir tragen das volle Risiko – Sie profitieren nur von Erfolg.</p>
+                    <p>Sie zahlen nur bei realem Umsatz. Kein Vorab-Marketingbudget. Skalierung nur bei funktionierenden Produkten. Unser erfahrenes Marketing-Team kümmert sich um alles – von der Produktpräsentation bis zur Kundenakquise. Die Provision von 15 % deckt alle Leistungen ab und ermöglicht gezielte Werbung, die messbar zusätzlichen Umsatz für Sie generiert.</p>
                 </div>
             </div>
         </main>
